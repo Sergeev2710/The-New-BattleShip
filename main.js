@@ -66,3 +66,35 @@ var model = {
 // model.fire("12");
 // model.fire("11");
 // model.fire("10");
+
+var controller = {
+	guesses: 0,
+	processGuess: function (guess) {
+
+	}
+};
+
+//вспомогательная функция которая проверяет данные на действительность,преобразует букву в цифру,проверяет действительность цифры и возвращает в виде строки.
+function parseGuess (guess) {
+	var alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+
+	if (guess === null || guess.length !== 2) {
+		alert ('Oops, please enter a letter and a number on the board.');
+	} else {
+		var firstChar = guess.charAt (0);
+		var row = alphabet.indexOf (firstChar);
+		var column = guess.charAt (1);
+
+		if (isNaN (row) || isNaN (column)) {
+			alert ('Oops, that is not on the board.');
+		} else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
+			alert ('Oops, that is off the board!');
+		} else {
+			return row + column;
+		}
+	}
+	return null;
+}
+// console.log(parseGuess("A0"));
+// console.log(parseGuess("B6"));
+// console.log(parseGuess("G3"));
