@@ -118,3 +118,33 @@ function parseGuess (guess) {
 // console.log(parseGuess("A0"));
 // console.log(parseGuess("B6"));
 // console.log(parseGuess("G3"));
+
+//Enter
+function handleKeyPress (e) {
+	var fireButton = document.getElementById('fireButton');
+	if(e.keyCode === 13) {
+		fireButton.click();
+		return false;
+	}
+}
+//Test Enter! A6,B6,C6  C4,D4,E4  B0,B1,B2
+
+
+function handleFireButton () {
+	var guessInput = document.getElementById ('guessInput');
+	var guess = guessInput.value;
+	controller.processGuess (guess);
+
+	guessInput.value = '';
+}
+
+
+window.onload = init;
+
+function init () {
+	var fireButton = document.getElementById ('fireButton');
+	fireButton.onclick = handleFireButton;
+	var guessInput = document.getElementById('guessInput');//Enter
+	guessInput.onkeypress = handleKeyPress;
+
+}
